@@ -1,6 +1,5 @@
-import Link from "next/link";
 import Student_info from ".//student-info"
-import Title from "./title"
+import HomeButton from "../components/HomeButton";
 
 export default function Page() {
 
@@ -9,7 +8,7 @@ export default function Page() {
 
     return (
       <main>
-        <Link href="/" className="absolute right-2 top-2">Go back to Home</Link>
+        <HomeButton/>
         {/* <h1>Welcome to week 2</h1> */}
         <h1>Shopping List</h1>
         <Student_info href=".//student-info">Go to Student Info</Student_info>    
