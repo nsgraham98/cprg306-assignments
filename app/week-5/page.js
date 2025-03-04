@@ -1,5 +1,5 @@
 import HomeButton from "../components/HomeButton";
-import NewItems from "./NewItems";
+import NewItems from "./newItems";
 
 export default function Page() 
 {
