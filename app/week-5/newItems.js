@@ -85,8 +85,8 @@ export default function NewItems()
                             disabled={quantity <= 1}
                             className={`p-3 m-3 rounded-lg border-none 
                             ${
-                                quantity <= 1
-                                    ? "bg-gray-500 hover:bg-gray-500"
+                                quantity <= 1 ? 
+                                    "bg-gray-500 hover:bg-gray-500"
                                     : "bg-green-800 hover:bg-green-900 active:bg-green-950"
                             }`}
                         >
