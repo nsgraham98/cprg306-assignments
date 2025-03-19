@@ -17,7 +17,7 @@ export default function Page()
         <main>
             <NewItems onAddItem={handleAddItem}/>
             <HomeButton/>
-            <ItemList itemsState={items}/>            
+            <ItemList items={items}/>            
         </main>
     )
 }

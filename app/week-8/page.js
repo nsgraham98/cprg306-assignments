@@ -22,8 +22,8 @@ export default function Page()
         return name;
     }
     
-    const handleItemSelect = (name) => {  
-        name = cleanItemString(name);    
+    const handleItemSelect = (item) => {  
+        const name = cleanItemString(item.name);    
         setSelectedItemName(name);
     };
 
@@ -33,8 +33,8 @@ export default function Page()
                 <NewItems 
                     onAddItem={handleAddItem}/>                
                 <ItemList 
-                    itemsState={items} 
-                    onItemSelect={(name) => handleItemSelect(name)} 
+                    items={itemsData} 
+                    onItemSelect={(item) => handleItemSelect(item)} 
                 />    
             </div>    
             <div>

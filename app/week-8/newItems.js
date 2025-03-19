@@ -26,7 +26,6 @@ export default function NewItems({onAddItem})
         };
                   
         console.log(item);
-        // alert(`Successfully Added ${quantity} ${name} to ${category}`);
         onAddItem(item);
         setName("");
         setCategory("produce");
@@ -39,7 +38,6 @@ export default function NewItems({onAddItem})
 
         if (name === "name") setName(value);
         if (name === "category") setCategory(value.toLowerCase());
-        // if (name === "quantity") setQuantity(value);
     };
        
 

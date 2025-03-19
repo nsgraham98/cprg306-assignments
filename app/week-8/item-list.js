@@ -7,13 +7,13 @@ export default function ItemList(props)
   const {items, onItemSelect} = props;  
 
   const [ sortBy, setSortBy ] = useState("name");
-
-  const sortedArr = Array.isArray(items) ? [...items].sort((a, b) => 
+  
+  const sortedArr = [...items].sort((a, b) => 
     sortBy === 'name'
     ? a.name.localeCompare(b.name)
     : a.category.localeCompare(b.category)
-  ) : [];
-
+  );
+  
   function handleSortChange(sortType) {
       if (sortType === 'name') {
           setSortBy('name');            
