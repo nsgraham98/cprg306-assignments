@@ -23,9 +23,7 @@ export default function NewItems({onAddItem})
             name,
             quantity,
             category
-        };
-                  
-        console.log(item);
+        };                  
         onAddItem(item);
         setName("");
         setCategory("produce");
@@ -41,15 +39,12 @@ export default function NewItems({onAddItem})
     };
        
 
-    return(
-        
+    return (  
         <main className="w-80 bg-slate-900 m-5 flex">
-
             <form 
                 onSubmit={handleSubmit}
                 className="p-4"
             >
-
                 <input 
                     name="name" 
                     type="text" 

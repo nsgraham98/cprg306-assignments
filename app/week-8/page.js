@@ -3,7 +3,7 @@ import { useState } from 'react';
 import HomeButton from "../components/HomeButton";
 import ItemList from "./item-list";
 import NewItems from "./newItems";
-import itemsData from './items.json';
+import itemsData from '../../lib/items.json';
 import MealIdeas from './meal-ideas';
 
 export default function Page() 
@@ -33,7 +33,7 @@ export default function Page()
                 <NewItems 
                     onAddItem={handleAddItem}/>                
                 <ItemList 
-                    items={itemsData} 
+                    items={items} 
                     onItemSelect={(item) => handleItemSelect(item)} 
                 />    
             </div>    

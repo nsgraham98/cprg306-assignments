@@ -1,7 +1,5 @@
 export default function Item(props) 
 {
-    // object destructuring 
-    // declaring the prop object's attributes for better clarity
     const {name, quantity, category} = props;
 
     return(

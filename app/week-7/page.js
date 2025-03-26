@@ -3,7 +3,7 @@ import { useState } from 'react';
 import HomeButton from "../components/HomeButton";
 import ItemList from "./item-list";
 import NewItems from "./newItems";
-import itemsData from './items.json';
+import itemsData from '../../lib/items.json';
 
 export default function Page() 
 {

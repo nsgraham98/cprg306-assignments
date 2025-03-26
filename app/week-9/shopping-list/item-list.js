@@ -2,9 +2,9 @@
 import Item from './item';
 import { useState } from 'react';
 
-export default function ItemList(props)
+export default function ItemList({items, onItemSelect})
 {
-  const {items, onItemSelect} = props;  
+  // const {items, onItemSelect} = props;  
 
   const [ sortBy, setSortBy ] = useState("name");
   

@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 export default function ItemList({items})
 {
-
   const [ sortBy, setSortBy ] = useState('name');
 
   const sortedArr = [...items].sort((a, b) => 

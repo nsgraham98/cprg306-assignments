@@ -1,6 +1,6 @@
 "use client";
 import Item from './item';
-import itemsArr from './items.json';
+import itemsArr from '../../lib/items.json';
 import { useState } from 'react';
 
 export default function ItemList()

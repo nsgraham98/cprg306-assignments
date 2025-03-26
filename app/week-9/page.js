@@ -21,26 +21,28 @@ export default function Page() {
   return (
     <div>
       <div >
-        <button className="bg-green-800 p-5 m-5 rounded-lg border-none hover:bg-green-900 active:bg-green-950" 
-          onClick={handleSignIn}>
-            Sign in
-        </button>
-        <button className="bg-green-800 p-5 m-5 rounded-lg border-none hover:bg-green-900 active:bg-green-950" 
-          onClick={handleSignOut}>
-            Sign out 
-        </button>
+        
+        
       </div>
 
       <div>
         {user ? (
-          <div>
-            <p>
-              Welcome, {user.displayName} ({user.email})
-            </p>
-            <Link href="/week-9/shopping-list">Shopping List</Link>
+          <div className="flex flex-col items-start">
+            <button className="bg-green-800 p-5 m-5 rounded-lg border-none hover:bg-green-900 active:bg-green-950" 
+              onClick={handleSignOut}>
+              Sign out 
+            </button>
+            <p className="ml-5">Signed in as {user.displayName} ({user.email})</p>
+            <Link className="bg-green-800 p-5 m-5 rounded-lg border-none hover:bg-green-900 active:bg-green-950" href="/week-9/shopping-list">Go To Shopping List</Link>
           </div>
         ) : (
-          <p>Please sign in to view your profile</p>
+          <div> 
+            <button className="bg-green-800 p-5 m-5 rounded-lg border-none hover:bg-green-900 active:bg-green-950" 
+              onClick={handleSignIn}>
+              Sign in
+            </button>
+            <p className="ml-5">Please sign in to view your profile</p>
+          </div>
         )}
       </div>
       <HomeButton/> 

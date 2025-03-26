@@ -24,9 +24,6 @@ export default function NewItems({onAddItem})
             quantity,
             category
         };
-                  
-        console.log(item);
-        // alert(`Successfully Added ${quantity} ${name} to ${category}`);
         onAddItem(item);
         setName("");
         setCategory("produce");
@@ -39,19 +36,15 @@ export default function NewItems({onAddItem})
 
         if (name === "name") setName(value);
         if (name === "category") setCategory(value.toLowerCase());
-        // if (name === "quantity") setQuantity(value);
     };
        
 
-    return(
-        
+    return (  
         <main className="w-80 bg-slate-900 m-5 flex">
-
             <form 
                 onSubmit={handleSubmit}
                 className="p-4"
             >
-
                 <input 
                     name="name" 
                     type="text" 
