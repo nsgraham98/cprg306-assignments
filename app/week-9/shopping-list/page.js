@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import HomeButton from "../components/HomeButton";
+import HomeButton from "../../components/HomeButton";
 import ItemList from "./item-list";
 import NewItems from "./newItems";
 import itemsData from './items.json';
@@ -9,6 +9,8 @@ import { useUserAuth } from '../_utils/auth-context';
 
 export default function Page() 
 {
+    const { user } = useUserAuth();
+    
     const [items, setItems] = useState([...itemsData]);
     const [selectedItemName, setSelectedItemName] = useState('');
 
@@ -23,27 +25,35 @@ export default function Page()
         return name;
     }
     
-    const handleItemSelect = (name) => {  
-        name = cleanItemString(name);    
+    const handleItemSelect = (item) => {  
+        const name = cleanItemString(item.name);    
         setSelectedItemName(name);
     };
 
+    if (!user) {
+        return (
+            <div>
+                <p className="text-2xl font-bold m-2">
+                    Your need to be signed in to view this page.
+                </p> 
+                <HomeButton />
+            </div>
+        )
+    }
     return (
         <main className="flex flex-row">
             <div>
                 <NewItems 
-                    onAddItem={handleAddItem}/>     
-                {useUserAuth().user ? <ItemList 
-                    itemsState={items} 
-                    onItemSelect={(name) => handleItemSelect(name)} 
-                /> : <p className="text-2xl font-bold m-2">Please sign in to view the shopping list</p>}           
-                  
-            </div>    
+                    onAddItem={handleAddItem}/>                
+                <ItemList 
+                    items={itemsData} 
+                    onItemSelect={(item) => handleItemSelect(item)} 
+                />   
+            </div>
             <div>
-                <MealIdeas 
-                    ingredient={selectedItemName}/> 
-                <HomeButton/> 
-            </div>                      
+                <MealIdeas ingredient={selectedItemName} />
+                <HomeButton />
+            </div>
         </main>
-    )
+    );
 }

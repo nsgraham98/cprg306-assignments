@@ -1,5 +1,5 @@
 "use client";
-import { react, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 async function fetchMealIdeas(ingredient)
     {
@@ -44,7 +44,4 @@ export default function MealIdeas({ingredient}) {
                 )}
         </div>
     )
-
-
-
 };

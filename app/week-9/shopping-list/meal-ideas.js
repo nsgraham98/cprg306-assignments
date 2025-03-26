@@ -1,20 +1,20 @@
 "use client";
-import { react, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 async function fetchMealIdeas(ingredient)
     {
         try {
             const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
-                const data = await response.json();
-            // return {idMeal, strMeal, strMealThumb}
-            return data
+            const data = await response.json();
+            return data.meals || [];
         }
         catch (error) {
             console.error(error.message);
+            return [];
         }
     };
 
-export default function MealIdeas(ingredient) {
+export default function MealIdeas({ingredient}) {
 
     const [meals, setMeals] = useState([]);
 
@@ -22,35 +22,26 @@ export default function MealIdeas(ingredient) {
         loadMealIdeas(ingredient)
     }, 
     [ingredient]);
-    
-    // object meal = {
-    //     idMeal,
-    //     strMeal,
-    //     strMealThumb
-    // }
 
-    const loadMealIdeas = (ingredient) => {
-        setMeals(fetchMealIdeas(ingredient));
+    const loadMealIdeas = async (ingredient) => {
+        const data = await fetchMealIdeas(ingredient);
+        setMeals(data);
     };
 
     return (
         <div>
-            <h1>Meal Ideas</h1>
+            <h1 className="text-3xl font-bold m-2 text-center">Meal Ideas</h1>
             {meals.length > 0 ? (
-                <ul>   
+                <ul >   
                     {meals.map((meal) => (
-                        <li key={meal.idMeal}>
-                            <p>{meal.strMeal}</p>
-                            <img src={meal.strMealThumb} alt={meal.strMeal} />                     
+                        <li key={meal.idMeal} className="p-2 m-4 bg-slate-900 max-w-sm">
+                        <p>{meal.strMeal}</p>   
                         </li>
                     ))}
                 </ul> 
                 ) : (
-                    <p>No meal ideas found</p>
+                    <p className="p-2 m-4 bg-slate-900 max-w-sm">No meal ideas found</p>                 
                 )}
         </div>
     )
-
-
-
 };
