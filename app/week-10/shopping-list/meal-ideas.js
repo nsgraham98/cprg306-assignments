@@ -40,7 +40,7 @@ export default function MealIdeas({ingredient}) {
                     ))}
                 </ul> 
                 ) : (
-                    <p className="p-2 m-4 bg-slate-900 max-w-sm">No meal ideas found</p>                 
+                    <p className="p-2 m-4 bg-slate-900 max-w-sm">No meal ideas found for: {ingredient} </p>              
                 )}
         </div>
     )

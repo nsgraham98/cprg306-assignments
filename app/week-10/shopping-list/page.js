@@ -9,14 +9,13 @@ import { getItems, addItem } from '../_services/shopping-list-service';
 
 export default function Page() 
 {
-    const user = useUserAuth();
+    const userContext = useUserAuth();
     
     const [items, setItems] = useState([]);
-    const [selectedItemName, setSelectedItemName] = useState('');
+    const [selectedItemName, setSelectedItemName] = useState(null);
 
     const handleAddItem = (item) => {
-        debugger;
-        const itemId = addItem(user.user.uid, item);
+        const itemId = addItem(userContext.user.uid, item);
         item.id = itemId;
         setItems([...items, item]);
     };
@@ -34,7 +33,8 @@ export default function Page()
     };
 
     async function loadItems() {
-        const items = await getItems(user.user.uid);
+        debugger;
+        const items = await getItems(userContext.user.uid);
         setItems(items);
     };
 
@@ -42,8 +42,7 @@ export default function Page()
         loadItems();
     }, []);
 
-
-    if (!user) {
+    if (!userContext) {
         return (
             <div>
                 <p className="text-2xl font-bold m-2">

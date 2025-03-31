@@ -1,9 +1,7 @@
 import { db } from "../_utils/firebase";
 import { collection, getDocs, addDoc, query } from "firebase/firestore";
 
-export async function getItems(userId) {
-    debugger;
-    console.log("DB: ", db);   
+export async function getItems(userId) { 
     const q = query(collection(db, "users", userId, "items")); 
     const querySnapshot = await getDocs(q);
     const items = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -12,7 +10,6 @@ export async function getItems(userId) {
 };
 
 export async function addItem(userId, item) {
-    debugger;
     console.log("DB: ", db);
         const docRef = await addDoc(collection(db, "users", userId, "items"), {
             name: item.name,
@@ -21,7 +18,7 @@ export async function addItem(userId, item) {
         });
         console.log("Document written with ID: ", docRef.id);
         return docRef.id;
-}
+};
 
 // export async function addUser(userId) {
 //     const docRef = await addDoc(collection(db, "users"), { userId });
